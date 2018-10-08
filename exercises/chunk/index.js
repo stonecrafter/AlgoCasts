@@ -8,6 +8,29 @@
 // chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
-function chunk(array, size) {}
+// Chunk size is positive integer of at least 1
+// Array has size of at least 1
+// Chunk size CAN be > array length
+function chunk(array, size) {
+  const newArr = [];
+
+  let subArr = [];
+  for (const el of array) {
+    if (subArr.length < size) {
+      subArr.push(el);
+    }
+
+    if (subArr.length === size) {
+      newArr.push(subArr);
+      subArr = [];
+    }
+  }
+
+  if (subArr.length > 0) {
+    newArr.push(subArr);
+  }
+
+  return newArr;
+}
 
 module.exports = chunk;

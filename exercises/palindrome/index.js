@@ -7,6 +7,13 @@
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
 
-function palindrome(str) {}
+// ASK: Can the input be undefined, empty string, non-string other value?
+function palindrome(str) {
+  if (!str) {
+    return false;
+  }
+  const reversed = str.split('').reduce((rev, char) => char + rev, '');
+  return str === reversed;
+}
 
 module.exports = palindrome;
